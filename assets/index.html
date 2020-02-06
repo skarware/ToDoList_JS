@@ -12,13 +12,14 @@
 </head>
 <body>
 <header class="container flex-wrapper">
-    <h1>ToDo List</h1>
+    <h1>ToDo::List <i class="fas fa-check-double"></i></h1>
 </header>
 
 <div class="container">
 
     <div id="addTask" class="flex-wrapper">
         <form class="pure-form ">
+            <i class="far fa-plus-square"></i>
             <input id="newTask" type="text" placeholder="Add new Task" required/>
         </form>
     </div>
@@ -29,12 +30,12 @@
                 <ul></ul>
             </div>
             <div id="completedTasks">
-                <h2>...</h2>
+                <h2><i class="fas fa-clipboard-check"></i>...</h2>
                 <ul></ul>
             </div>
         </div>
 
-    <button id="clearButton" class="pure-button"><i class="fas fa-snowplow"></i>  Clear ToDo List</button>
+    <button id="clearButton" class="pure-button"><i class="fas fa-snowplow"></i>  Clear All Tasks</button>
 
 </div>
 </body>

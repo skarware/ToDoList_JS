@@ -15,18 +15,29 @@ h1, h2 {
     /*vertical-align: middle;*/
 }
 
-#addTask form {
-    width: 100%;
+.fa-check-double {
+    color: green;
+}
 
+.fa-plus-square {
+    font-size: 2em;
+    /*color: green;*/
+    margin: 10px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#addTask form {
+    display: flex;
+    width: 100%;
 }
 
 #addTask input {
     padding: 10px 25px;
     width: 100%;
     background-color: #fef9e7;
+    /*margin-right: 48px;*/
 }
-
-
 /* Remove margins and padding from the list */
 ul {
     margin: 0;
@@ -76,7 +87,7 @@ ul li:hover::before {
 
 /* When clicked on, add a background color and strike out text */
 ul li.checked {
-    background: #999;
+    background: #a6acaf ;
     color: #fff;
     text-decoration: line-through;
 }
@@ -101,7 +112,7 @@ ul li.checked::before {
 
 /* Style the close button */
 .close {
-    color: #f44336;
+    color: #e74c3c ;
     font-weight: 700;
     position: absolute;
     right: 0;
@@ -110,7 +121,7 @@ ul li.checked::before {
 }
 
 .close:hover {
-    background-color: #f44336;
+    background-color: #e74c3c;
     color: white;
 }
 
@@ -152,20 +163,13 @@ header {
     text-align: left;
 }
 
-#toDoTasks {
-    /*background-color: #d5d8dc;*/
-}
-
-#completedTasks {
-    /*background-color: #999;*/
-}
-
 #clearButton {
-    background-color: #e74c3c;
+    /*background: rgb(202, 60, 60); !* this is a maroon *!*/
     color: white;
-    margin-top: 100px;
+    background:  #cb4335 ;
+    margin-top: 50px;
 }
 
 #clearButton:hover {
-    transform: scale(1.1);
+    transform: scale(0.95);
 }

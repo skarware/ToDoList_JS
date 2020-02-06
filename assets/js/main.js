@@ -83,8 +83,8 @@ function getTaskList() {
     ulTodo.innerText = "";
     ulDone.innerText = "";
     // Set/reset h2s content
-    h2Todo.textContent = "Tasks To Do";
-    h2Done.textContent = "Completed Tasks";
+    h2Todo.innerHTML = "<i class=\"fas fa-clipboard-list\"></i> Tasks To Do";
+    h2Done.innerHTML = "<i class=\"fas fa-clipboard-check\"></i> Completed Tasks";
     // show localStorage tasks if not empty
     if (localStorage.tasks.length > 2) { // not empty is more than 2
         // create list of persons

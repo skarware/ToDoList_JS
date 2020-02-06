@@ -3,36 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>To:Do::List</title>
+    <title>ToDo App</title>
     <link rel="stylesheet" href="css/normalize.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/pure-release-1.0.1/pure-min.css">
     <link rel="stylesheet" href="css/main.css">
     <script src="js/main.js" defer></script>
 </head>
 <body>
+<header class="container flex-wrapper">
+    <h1>ToDo List</h1>
+</header>
 
 <div class="container">
-    <h1>To Do List</h1>
 
-    <nav>
-
-    </nav>
-
-    <div id="add">
-        <h2>Add new Task</h2>
-        <form>
-            <input id="newTask" type="text" placeholder="Name of the task" required/>
+    <div id="addTask" class="flex-wrapper">
+        <form class="pure-form ">
+            <input id="newTask" type="text" placeholder="Add new Task" required/>
         </form>
     </div>
 
-    <div id="list">
+        <div id="tasks-container">
+            <div id="toDoTasks">
+                <h2>...</h2>
+                <ul></ul>
+            </div>
+            <div id="completedTasks">
+                <h2>...</h2>
+                <ul></ul>
+            </div>
+        </div>
 
-        <h2>Task to do</h2>
-        <ul></ul>
-
-    </div>
-
-    <button id="clearButton">Clear All</button>
+    <button id="clearButton" class="pure-button"><i class="fas fa-snowplow"></i>  Clear ToDo List</button>
 
 </div>
 </body>

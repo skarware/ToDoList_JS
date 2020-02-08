@@ -1,11 +1,12 @@
-const form = document.querySelector('form');
-const inputValue = document.getElementById('newTask');
+const formAdd = document.querySelector('#addTask form');
+const inputAdd = document.querySelector('#addTask input');
 const clearButton = document.getElementById('clearButton');
 const divTasksContainer = document.getElementById('tasks-container');
 const ulTodo = document.querySelector('#toDoTasks ul');
 const ulDone = document.querySelector('#completedTasks ul');
 const h2Todo = document.querySelector('#toDoTasks h2');
 const h2Done = document.querySelector('#completedTasks h2');
+const tasksContainer = document.querySelector("#tasks-container");
 
 // load array if localStorage not empty
 let tasksArray = localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : []; // localStorage.getItem('key');
@@ -18,14 +19,16 @@ function saveTasksArray() {
     localStorage.setItem('tasks', JSON.stringify(tasksArray))   // localStorage.setItem('key', 'value')
 }
 
-// event listener for input form
-form.addEventListener("submit", ev => {
+clearButton.addEventListener("click", clearTaskList);
+
+// event listener for new task input form
+formAdd.addEventListener("submit", ev => {
     ev.preventDefault();
     // push new task into array
     tasksArray.push(
         {
             id: nextId,
-            title: inputValue.value,
+            title: inputAdd.value,
             done: false
         }
     );
@@ -36,10 +39,27 @@ form.addEventListener("submit", ev => {
     // render all ul list elements on submit
     getTaskList();
     // reset inputValue to empty string
-    inputValue.value = '';
+    inputAdd.value = '';
 });
 
-clearButton.addEventListener("click", clearTaskList);
+// event listener for task-container id to catch bubbling events from edit inputs
+tasksContainer.addEventListener("submit", ev => {
+    ev.preventDefault();
+    // Edit task when clicking on a list tasks's edit button
+    // edit clicked task in array
+    tasksArray.forEach(task => {
+        if (task != null) {
+            if (task.id.toString() === ev.target.id.toString()) {
+                const editInput = document.querySelector('#editInput');
+                task.title = editInput.value;
+            }
+        }
+    });
+    // save modified array to localStorage
+    saveTasksArray();
+    // Render DOM after modification
+    getTaskList();
+});
 
 // Arrow function for creating li element
 const liMaker = task => {
@@ -148,18 +168,30 @@ divTasksContainer.addEventListener('click', ev => {
                 }
             }
         });
+        // // Render DOM after modification
+        getTaskList();
     }
+
     // Edit task when clicking on a list tasks's edit button
     if (ev.target.className === 'edit') {
         // edit clicked task in array
         tasksArray.forEach(task => {
             if (task != null) {
                 if (task.id.toString() === ev.target.parentElement.id.toString()) {
-                    // functionToEditTaskInArray();
-                    // delete tasksArray[tasksArray.indexOf(task)];
-                    console.log("edit button clicked for id: ", tasksArray.indexOf(task))
+                    const form = document.createElement('form');
+                    const input = document.createElement('input');
+                    form.className = "pure-form";
+                    form.id = ev.target.parentElement.id;
+                    input.id = "editInput";
+                    input.type = "text";
+                    input.defaultValue = task.title; // get task as value for input
+                    input.required = true;
+                    form.append(input);
+                    ev.target.parentElement.outerHTML = form.outerHTML; // change li to form tag element
                 }
             }
+            // Render DOM after tag modification
+            // do not, leave it to submit event listener
         });
     }
     // Delete task when clicking on a list tasks's delete button
@@ -172,12 +204,14 @@ divTasksContainer.addEventListener('click', ev => {
                 }
             }
         });
+        // // Render DOM after modification
+        getTaskList();
     }
     // After any modification on array save changes to localStorage and rerender DOM
     // save modified array to localStorage
     saveTasksArray();
-    // Render DOM after modification
-    getTaskList();
+    // // Render DOM after modification
+    // getTaskList(); // if uncomment edit function wont work
 
 }, false);
 

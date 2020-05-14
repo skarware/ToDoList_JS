@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ToDo App</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/pure-release-1.0.1/pure-min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+<header class="container flex-wrapper">
+    <h1>ToDo::List <i class="fas fa-check-double"></i></h1>
+</header>
+
+<div class="container">
+
+    <div id="addTask" class="flex-wrapper">
+        <form class="pure-form ">
+            <i class="far fa-plus-square"></i>
+            <input id="newTask" type="text" placeholder="Add New Task" required/>
+        </form>
+    </div>
+
+        <div id="tasks-container">
+            <div id="toDoTasks">
+                <h2>...</h2>
+                <ul></ul>
+            </div>
+            <div id="completedTasks">
+                <h2>...</h2>
+                <ul></ul>
+            </div>
+        </div>
+
+    <button id="clearButton" class="pure-button"><i class="fas fa-snowplow"></i>  Clear All Tasks</button>
+
+</div>
+</body>
+</html>

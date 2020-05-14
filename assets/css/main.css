@@ -42,7 +42,7 @@ h1, h2 {
 #tasks-container input {
     padding: 10px 25px;
     width: 100%;
-    background-color:  #ebf5fb ;
+    background-color: #ebf5fb;
     margin: 1px 0;
 }
 
@@ -95,7 +95,7 @@ ul li:hover::before {
 
 /* When clicked on, add a background color and strike out text */
 ul li.checked {
-    background: #a6acaf ;
+    background: #a6acaf;
     color: #fff;
     text-decoration: line-through;
 }
@@ -120,7 +120,7 @@ ul li.checked::before {
 
 /* Style the close button */
 .close {
-    color: #e74c3c ;
+    color: #e74c3c;
     font-weight: 700;
     position: absolute;
     right: 0;
@@ -170,7 +170,7 @@ ul li.checked::before {
 #clearButton {
     /*background: rgb(202, 60, 60); !* this is a maroon *!*/
     color: white;
-    background:  #cb4335 ;
+    background: #cb4335;
     margin-top: 50px;
 }
 

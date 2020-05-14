@@ -8,12 +8,6 @@ const h2Todo = document.querySelector('#toDoTasks h2');
 const h2Done = document.querySelector('#completedTasks h2');
 const tasksContainer = document.querySelector("#tasks-container");
 
-// load array if localStorage not empty
-let tasksArray = localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : []; // localStorage.getItem('key');
-
-// setup NewId
-let nextId = tasksArray.length;
-
 // save tasksArray into localStorage
 function saveTasksArray() {
     localStorage.setItem('tasks', JSON.stringify(tasksArray))   // localStorage.setItem('key', 'value')
@@ -142,7 +136,7 @@ function clearTaskList(e) {
     localStorage.clear();
     // clear list of array
     tasksArray.length = 0;
-    // override tasksArray list from localStorage
+    // override localStorage with empty array
     saveTasksArray();
     // remove list from DOM
     while (ulTodo.firstChild) {
@@ -215,6 +209,14 @@ divTasksContainer.addEventListener('click', ev => {
 
 }, false);
 
-
-// on first load show to do list
+let tasksArray = [];
+let nextId = 0;
+// load tasksArray from localStorage if it's not empty
+if(localStorage.getItem('tasks')) {
+    tasksArray = JSON.parse(localStorage.getItem('tasks'));
+    nextId = tasksArray.length;
+}
+// in case localStorage is empty save empty tasks array for app to function properly
+saveTasksArray();
+// on load show to do list
 getTaskList();
